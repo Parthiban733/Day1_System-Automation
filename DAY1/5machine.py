@@ -15,6 +15,7 @@ def generate_sensor_data():
 
 # STEP 2 — Define automation rules
 RULES = [
+    
     {
         "name": "HIGH_TEMP",
         "priority": 1,
