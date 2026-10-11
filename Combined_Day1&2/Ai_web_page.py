@@ -1,4 +1,4 @@
-"""Systom System Automation: Day 1 rule engine + Day 2 trained ML model.
+"""system System Automation: Day 1 rule engine + Day 2 trained ML model.
 
 Run from this folder:
     streamlit run final_live_monitor.py
@@ -26,7 +26,7 @@ HISTORY_PATH = ROOT / "live_monitor_history.csv"
 FEATURES = ["temperature", "pressure", "vibration", "rpm", "current"]
 MACHINES = [f"Machine_{i}" for i in range(1, 6)]
 
-st.set_page_config(page_title="Systom Live Machine Monitor", page_icon="⚙️", layout="wide")
+st.set_page_config(page_title="system Live Machine Monitor", page_icon="⚙️", layout="wide")
 
 @st.cache_resource
 def load_model():
@@ -101,7 +101,7 @@ def append_history(rows):
     frame.to_csv(HISTORY_PATH, mode="a", header=not HISTORY_PATH.exists(), index=False)
 
 
-st.title("⚙️ Systom — Live Machine Monitoring")
+st.title("⚙️ system — Live Machine Monitoring")
 st.caption("Day 1: priority-based rule engine  •  Day 2: trained Random Forest model")
 st.warning("DEMO MODE: readings are simulated. This dashboard only reports alerts; it does not control or stop real machinery.")
 
@@ -118,7 +118,7 @@ with st.sidebar:
     st.caption("For real hardware, replace read_sensor_data() in the script and validate all thresholds with your supervisor.")
 
 if live:
-    st_autorefresh(interval=refresh_seconds * 1000, key="systom_live_refresh")
+    st_autorefresh(interval=refresh_seconds * 1000, key="system_live_refresh")
 
 if "monitor_rows" not in st.session_state:
     st.session_state.monitor_rows = []
@@ -183,7 +183,7 @@ st.subheader("Recent monitoring history")
 st.dataframe(history[show_cols].head(50), use_container_width=True, hide_index=True)
 
 csv_bytes = history.to_csv(index=False).encode("utf-8")
-st.download_button("Download session history (CSV)", data=csv_bytes, file_name="systom_live_monitor_history.csv", mime="text/csv")
+st.download_button("Download session history (CSV)", data=csv_bytes, file_name="system_live_monitor_history.csv", mime="text/csv")
 if st.button("Clear displayed session history"):
     st.session_state.monitor_rows = []
     st.rerun()
